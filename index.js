@@ -1,8 +1,21 @@
 function getOptions() {
     return {
         items : [
-            { name: 'vacio', value: 30 },
-            { name: 'top', value: 10 }
+            { 
+                name: 'vacio', 
+                color: 'yellow', 
+                value: 30,
+            },
+            { 
+                name: 'top', 
+                color: 'gray', 
+                value: 20 
+            },
+            { 
+                name: 'top', 
+                color: 'red', 
+                value: 40 
+            }
         ]
     };
 }

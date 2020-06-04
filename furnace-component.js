@@ -18,13 +18,10 @@ class Furnace extends HTMLElement {
 
     render() {
         this.options = eval(this.getAttribute('options'));
+        console.log(this.shadow);
         this.shadow.innerHTML = `
         <style>
-        .furnace-component {
-            width: 100px;
-            height: 300px;
-            background-color: bisque;
-        }
+
         
             .furnace-component ul {
                 list-style: none;
@@ -33,39 +30,36 @@ class Furnace extends HTMLElement {
                 .furnace-component li {
                     border: 1px solid lightgray;
                 }
+                ${
+                    this.options.items.map(element => `.furnace-component li#item-${element.name} { height: ${element.value}px; }`)
+                        .join('')
+                }
         
-                    .furnace-component li.level-lightgray {
+                    .furnace-component li.lightgray {
                         background-color: lightgray;
                     }
         
-                    .furnace-component li.level-yellow {
+                    .furnace-component li.yellow {
                         background-color: yellow;
                     }
                     
-                    .furnace-component li.level-gray {
+                    .furnace-component li.gray {
                         background-color: gray;
                     }
         
-                    .furnace-component li.level-red {
+                    .furnace-component li.red {
                         background-color: red;
                     }
         </style>
         <div class="furnace-component" role="furnace">
             <ul>
             ${ 
-                this.options.items.map(element => `<li class="level-lightgray">${element.value}%</li>`)
+                this.options.items.map(element => `<li id="item-${element.name}" class="${element.color}">${element.value}%</li>`)
                 .join('')
             }
             </ul>
         </div>`;
     }
 }
-{/* <div class="furnace-component" role="furnace">
-            <ul>
-                <li class="level level-lightgray" data-value="30">30%</li>
-                <li class="level level-yellow" data-value="20">20%</li>
-                <li class="level level-gray" data-value="10">10%</li>
-                <li class="level level-red" data-value="40">40%</li>
-            </ul>
-        </div> */}
+
 customElements.define('furnace-2d', Furnace);
