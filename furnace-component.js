@@ -31,25 +31,9 @@ class Furnace extends HTMLElement {
                     border: 1px solid lightgray;
                 }
                 ${
-                    this.options.items.map(element => `.furnace-component li#item-${element.name} { height: ${element.value}px; }`)
+                    this.options.items.map(element => `.furnace-component li#item-${element.name} { height: ${element.value}px; background-color: ${element.color} }`)
                         .join('')
                 }
-        
-                    .furnace-component li.lightgray {
-                        background-color: lightgray;
-                    }
-        
-                    .furnace-component li.yellow {
-                        background-color: yellow;
-                    }
-                    
-                    .furnace-component li.gray {
-                        background-color: gray;
-                    }
-        
-                    .furnace-component li.red {
-                        background-color: red;
-                    }
         </style>
         <div class="furnace-component" role="furnace">
             <ul>

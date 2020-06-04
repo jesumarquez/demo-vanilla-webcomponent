@@ -3,18 +3,23 @@ function getOptions() {
         items : [
             { 
                 name: 'vacio', 
-                color: 'yellow', 
+                color: 'lightgray', 
                 value: 30,
             },
             { 
-                name: 'top', 
-                color: 'gray', 
+                name: 'espuma', 
+                color: 'yellow', 
                 value: 20 
             },
             { 
-                name: 'top', 
-                color: 'red', 
+                name: 'solido', 
+                color: 'gray', 
                 value: 40 
+            },
+            { 
+                name: 'liquido', 
+                color: 'red', 
+                value: 80 
             }
         ]
     };
