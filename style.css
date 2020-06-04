@@ -1,0 +1,29 @@
+.furnace-component {
+    width: 100px;
+    height: 300px;
+    background-color: bisque;
+}
+
+    .furnace-component ul {
+        list-style: none;
+    }
+
+        .furnace-component li {
+            border: 1px solid lightgray;
+        }
+
+            .furnace-component li.level-lightgray {
+                background-color: red;
+            }
+
+            .furnace-component li.level-yellow {
+                background-color: yellow;
+            }
+            
+            .furnace-component li.level-gray {
+                background-color: gray;
+            }
+
+            .furnace-component li.level-red {
+                background-color: red;
+            }
