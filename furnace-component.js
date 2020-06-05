@@ -22,40 +22,62 @@ class Furnace extends HTMLElement {
         this.shadow.innerHTML = `
         <style>
             :host {
+                display: inline-block;
+                position: relative;
+            } 
+            
+            .container {
                 display: inline-flex;
                 flex-direction: column;
-
+                width: 100%;
+                height: 100%;
             }
-        
-            :host ul {
-                mask-image: url('${this.options.img}');
-                -webkit-mask-image: url('${this.options.img}');
-                -webkit-mask-repeat: no-repeat;
-                mask-repeat: no-repeat;
-                -webkit-mask-size: 100% 100%;
-                mask-size: 100% 100%;
+
+            .container .top-offset {
+                height: ${this.options.topOffset};
+            }
+
+            .container .bottom-offset {
+                height: ${this.options.bottomOffset};
+            }
+
+            .container ul {
                 display: flex;
                 flex-grow: 1;
                 flex-direction: column;
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                background-attachment: fixed;
             }
             ${
-                this.options.items.map(element => `
-                    :host li#item-${element.name} { 
+                this.options.levels.map(element => `
+                    .container li#item-${element.name} { 
                         flex-grow: ${element.value}; 
                         background-color: ${element.color} 
                     }`)
                     .join('')
             }
+            :host img {
+                position: absolute;
+                max-width: 100%;
+                max-height: 100%;
+                left: 0;
+                top: 0;
+            }
         </style>
+        <div class="container">
+        <div class="top-offset"></div>
         <ul>
         ${ 
-            this.options.items.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
+            this.options.levels.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
             .join('')
         }
-        </ul>`;
+        </ul>
+        <div class="bottom-offset"></div>
+        </div>
+        <img src="${this.options.urlImgMask}">
+        `;
     }
 }
 

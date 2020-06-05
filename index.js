@@ -1,11 +1,13 @@
 function getOptions() {
     return {
-        img: './furnace.png',
-        items : [
+        urlImgMask: './furnace.png',
+        topOffset: '65px',
+        bottomOffset: '30px',
+        levels : [
             { 
                 name: 'vacio', 
-                color: 'none', 
-                value: 20 
+                color: 'transparent', 
+                value: 50 
             },
             { 
                 name: 'espuma', 
@@ -15,12 +17,12 @@ function getOptions() {
             { 
                 name: 'solido', 
                 color: 'gray', 
-                value: 2
+                value: 12
             },
             { 
                 name: 'liquido', 
                 color: 'red', 
-                value: 70 
+                value: 50 
             }
         ]
     };
