@@ -1,25 +1,26 @@
 function getOptions() {
     return {
+        img: './furnace.png',
         items : [
             { 
                 name: 'vacio', 
                 color: 'none', 
-                value: 10 
+                value: 20 
             },
             { 
                 name: 'espuma', 
                 color: 'yellow', 
-                value: 7 
+                value: 8 
             },
             { 
                 name: 'solido', 
                 color: 'gray', 
-                value: 3 
+                value: 2
             },
             { 
                 name: 'liquido', 
                 color: 'red', 
-                value: 80 
+                value: 70 
             }
         ]
     };

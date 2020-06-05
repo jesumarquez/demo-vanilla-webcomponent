@@ -24,9 +24,16 @@ class Furnace extends HTMLElement {
             :host {
                 display: inline-flex;
                 flex-direction: column;
+
             }
         
             :host ul {
+                mask-image: url('${this.options.img}');
+                -webkit-mask-image: url('${this.options.img}');
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
                 display: flex;
                 flex-grow: 1;
                 flex-direction: column;
@@ -44,7 +51,6 @@ class Furnace extends HTMLElement {
             }
         </style>
         <ul>
-            <li id="item-empty"></li>
         ${ 
             this.options.items.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
             .join('')

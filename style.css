@@ -1,7 +1,9 @@
+
 furnace-2d {
     width: 100px;
-    height: 250px;
+    height: 200px;
     background-color: bisque;
+    border: 1px solid blue;
 }
 
 /*
