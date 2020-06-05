@@ -21,28 +21,35 @@ class Furnace extends HTMLElement {
         console.log(this.shadow);
         this.shadow.innerHTML = `
         <style>
-
+            :host {
+                display: inline-flex;
+                flex-direction: column;
+            }
         
-            .furnace-component ul {
+            :host ul {
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
                 list-style: none;
+                padding: 0;
+                margin: 0;
             }
-        
-                .furnace-component li {
-                    border: 1px solid lightgray;
-                }
-                ${
-                    this.options.items.map(element => `.furnace-component li#item-${element.name} { height: ${element.value}px; background-color: ${element.color} }`)
-                        .join('')
-                }
+            ${
+                this.options.items.map(element => `
+                    :host li#item-${element.name} { 
+                        flex-grow: ${element.value}; 
+                        background-color: ${element.color} 
+                    }`)
+                    .join('')
+            }
         </style>
-        <div class="furnace-component" role="furnace">
-            <ul>
-            ${ 
-                this.options.items.map(element => `<li id="item-${element.name}" class="${element.color}">${element.value}%</li>`)
-                .join('')
-            }
-            </ul>
-        </div>`;
+        <ul>
+            <li id="item-empty"></li>
+        ${ 
+            this.options.items.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
+            .join('')
+        }
+        </ul>`;
     }
 }
 
