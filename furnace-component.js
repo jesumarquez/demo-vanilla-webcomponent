@@ -4,8 +4,17 @@ class Furnace extends HTMLElement {
         this.shadow = this.attachShadow({ mode: "open" });
     }
 
-    static get observerAttributes() {
-        return ["options"];
+    get options(){
+        return eval(this.getAttribute('options'));
+    }
+
+    set options(val) {
+        console.log(val);
+        this.setAttribute('options', val);
+    }
+
+    static get observedAttributes() {
+        return ['options'];
     }
 
     attributeChangedCallback(prop, oldVal, newVal) {
@@ -17,8 +26,7 @@ class Furnace extends HTMLElement {
     }
 
     render() {
-        this.options = eval(this.getAttribute('options'));
-        console.log(this.shadow);
+        let o = this.options;
         this.shadow.innerHTML = `
         <style>
             :host {
@@ -34,11 +42,11 @@ class Furnace extends HTMLElement {
             }
 
             .container .top-offset {
-                height: ${this.options.topOffset};
+                height: ${o.topOffset};
             }
 
             .container .bottom-offset {
-                height: ${this.options.bottomOffset};
+                height: ${o.bottomOffset};
             }
 
             .container ul {
@@ -51,7 +59,7 @@ class Furnace extends HTMLElement {
                 background-attachment: fixed;
             }
             ${
-                this.options.levels.map(element => `
+                o.levels.map(element => `
                     .container li#item-${element.name} { 
                         flex-grow: ${element.value}; 
                         background-color: ${element.color} 
@@ -70,13 +78,13 @@ class Furnace extends HTMLElement {
         <div class="top-offset"></div>
         <ul>
         ${ 
-            this.options.levels.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
+            o.levels.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
             .join('')
         }
         </ul>
         <div class="bottom-offset"></div>
         </div>
-        <img src="${this.options.urlImgMask}">
+        <img src="${o.urlImgMask}">
         `;
     }
 }

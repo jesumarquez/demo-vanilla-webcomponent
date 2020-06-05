@@ -10,7 +10,19 @@
 
 <body>
     <h1>Furnace Component</h1>
-    <furnace-2d options="getOptions()"></furnace-2d>
+    <div class="panel">
+        <div>
+            <input id="txtEspuma" type="text" placeholder="Espuma" class="input" value="20">
+        </div>
+        <div>
+            <input id="txtAceroSolido" type="text" placeholder="Acero Solido" class="input" value="20">
+        </div>
+        <div>
+            <input id="txtAceroLiquido" type="text" placeholder="Acero Liquido" class="input" value="40">
+        </div>
+        <button onclick="update()">Update</button>
+    </div>
+    <furnace-2d id="furnace1" options="options"></furnace-2d>
     <script src="./index.js"></script>
     <script src="./furnace-component.js"></script>
 </body>
