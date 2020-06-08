@@ -31,7 +31,6 @@ class Furnace extends HTMLElement {
     }
 
     render() {
-        debugger;
         if(!this.options) return;
 
         this.shadow.innerHTML = `
