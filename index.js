@@ -21,7 +21,7 @@ let levels = [
     }
 ];
 
-options = {
+let options = {
         urlImgMask: './furnace.png',
         topOffset: '65px',
         bottomOffset: '30px',
@@ -34,5 +34,5 @@ update = () => {
     levels[3].value = parseInt(document.getElementById('txtAceroLiquido').value);
 
     let furnace1 = document.querySelector('#furnace1');
-    furnace1.setAttribute('options', 'options');
+    furnace1.setOptions(options);
 }

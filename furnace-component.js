@@ -4,21 +4,26 @@ class Furnace extends HTMLElement {
         this.shadow = this.attachShadow({ mode: "open" });
     }
 
-    get options(){
-        return eval(this.getAttribute('options'));
-    }
+    // get options(){
+    //     return eval(this.getAttribute('options'));
+    // }
 
-    set options(val) {
-        console.log(val);
-        this.setAttribute('options', val);
-    }
+    // set options(val) {
+    //     console.log(val);
+    //     this.setAttribute('options', val);
+    // }
 
-    static get observedAttributes() {
-        return ['options'];
-    }
+    // static get observedAttributes() {
+    //     return ['options'];
+    // }
 
-    attributeChangedCallback(prop, oldVal, newVal) {
-        if(prop === 'options') this.render();
+    // attributeChangedCallback(prop, oldVal, newVal) {
+    //     if(prop === 'options') this.render();
+    // }
+
+    setOptions(options) {
+        this.options = options;
+        this.render();
     }
 
     connectedCallback() {
@@ -26,7 +31,9 @@ class Furnace extends HTMLElement {
     }
 
     render() {
-        let o = this.options;
+        debugger;
+        if(!this.options) return;
+
         this.shadow.innerHTML = `
         <style>
             :host {
@@ -42,11 +49,11 @@ class Furnace extends HTMLElement {
             }
 
             .container .top-offset {
-                height: ${o.topOffset};
+                height: ${this.options.topOffset};
             }
 
             .container .bottom-offset {
-                height: ${o.bottomOffset};
+                height: ${this.options.bottomOffset};
             }
 
             .container ul {
@@ -59,7 +66,7 @@ class Furnace extends HTMLElement {
                 background-attachment: fixed;
             }
             ${
-                o.levels.map(element => `
+                this.options.levels.map(element => `
                     .container li#item-${element.name} { 
                         flex-grow: ${element.value}; 
                         background-color: ${element.color} 
@@ -78,13 +85,13 @@ class Furnace extends HTMLElement {
         <div class="top-offset"></div>
         <ul>
         ${ 
-            o.levels.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
+            this.options.levels.map(element => `<li id="item-${element.name}" class="${element.color}"></li>`)
             .join('')
         }
         </ul>
         <div class="bottom-offset"></div>
         </div>
-        <img src="${o.urlImgMask}">
+        <img src="${this.options.urlImgMask}">
         `;
     }
 }
